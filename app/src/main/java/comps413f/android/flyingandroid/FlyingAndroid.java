@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable.Callback;
 
 /** The flying android. */
 public class FlyingAndroid extends Sprite {
-    private static final float INITIAL_DY = 20;  // Initial velocity in vertical direction
+    private static final float INITIAL_DY = 15;  // Initial velocity in vertical direction
     private float dy;  // y velocity of the flying android object
 
     /** Constructor. */
