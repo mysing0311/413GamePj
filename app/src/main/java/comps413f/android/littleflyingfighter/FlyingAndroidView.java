@@ -25,6 +25,7 @@ public class FlyingAndroidView extends SurfaceView {
     /** Width and height of the arena. */
     public static int arenaWidth;
     public static int arenaHeight;
+    private SoundPlayer sound;
 
     /** Animation object, the flying android. */
     private FlyingAndroid flyingAndroid;
@@ -85,9 +86,12 @@ public class FlyingAndroidView extends SurfaceView {
                     startTime = System.currentTimeMillis();
                     background.stop(false);
                     ((AnimationDrawable)(flyingAndroid.getDrawable())).start();
+                    sound = new SoundPlayer(context);
+
                 }
                 else {  // Game active
                     flyingAndroid.fly();
+                    sound.playBgm();
                 }
 
                 present = false;
@@ -222,7 +226,7 @@ public class FlyingAndroidView extends SurfaceView {
         gameOver = true;
         ((AnimationDrawable)(flyingAndroid.getDrawable())).stop();
         background.stop(true);
-
+        sound.playGameOver();
 
     }
 
@@ -276,6 +280,7 @@ public class FlyingAndroidView extends SurfaceView {
     public FlyingAndroidView(Context context) {
         super(context);
         this.context = context;
+
         
         setOnTouchListener(new View.OnTouchListener() {
             @Override

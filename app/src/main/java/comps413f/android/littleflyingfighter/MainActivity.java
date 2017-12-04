@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         animationView = new FlyingAndroidView(this);
         setContentView(animationView);
+
     }
 
     @Override
