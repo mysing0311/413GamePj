@@ -1,4 +1,4 @@
-package comps413f.android.flyingandroid;
+package comps413f.android.littleflyingfighter;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
@@ -11,7 +11,7 @@ public class FlyingAndroid extends Sprite {
 
     /** Constructor. */
     public FlyingAndroid(Callback callback, Context context) {
-        drawable = (AnimationDrawable) context.getResources().getDrawable(R.drawable.flying_android);
+        drawable = (AnimationDrawable) context.getResources().getDrawable(R.drawable.flying_fighter);
         drawable.setCallback(callback);
 
         dy = INITIAL_DY;

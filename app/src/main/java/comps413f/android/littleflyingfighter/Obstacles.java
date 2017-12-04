@@ -1,4 +1,4 @@
-package comps413f.android.flyingandroid;
+package comps413f.android.littleflyingfighter;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -25,9 +25,9 @@ public class Obstacles {
         int y = minY + (int) (Math.random() * (maxY - minY));
 
         // iii. Upper and lower obstacles creation
-        obstacles[0] = new Obstacle(context, R.drawable.obstacle_upper);
+        obstacles[0] = new Obstacle(context, R.drawable.cylinder_2);//upper
         obstacles[0].setPosition(x, y - obstacles[0].getHeight());
-        obstacles[1] = new Obstacle(context, R.drawable.obstacle_lower);
+        obstacles[1] = new Obstacle(context, R.drawable.cylinder_1);//lower
         obstacles[1].setPosition(x, y + distance);
     }
 

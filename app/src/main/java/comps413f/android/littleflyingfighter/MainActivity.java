@@ -1,13 +1,21 @@
-package comps413f.android.flyingandroid;
+package comps413f.android.littleflyingfighter;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 
 public class MainActivity extends Activity {
     /** The animation view. */
     private FlyingAndroidView animationView;
+    private long downtime = System.currentTimeMillis();
+    private long eventime = System.currentTimeMillis()+100;
+    float x = 0.0f;
+    float y =0.0f;
+    int metaState = 0;
+    public MotionEvent evt = MotionEvent.obtain(downtime,eventime,MotionEvent.ACTION_DOWN,x,y,metaState);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +31,12 @@ public class MainActivity extends Activity {
         return true;
     }
 
+    public boolean onTouchtoResume(android.view.MotionEvent evt) {
+        if (evt.getAction() == android.view.MotionEvent.ACTION_DOWN) {
+            animationView.resume();
+
+        }return true;}
+
     /**
      * Handles the option menu selection. This method is called when an options
      * menu item is selected.
@@ -35,7 +49,9 @@ public class MainActivity extends Activity {
             break;
 
         case R.id.action_pause:
-            animationView.resume();
+            animationView.pause();
+            onTouchtoResume(evt);
+
         break;
         }
         return false;

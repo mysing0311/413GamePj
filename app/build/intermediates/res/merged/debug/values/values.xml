@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/steph/Desktop/413GamePj/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/Heyy/Documents/413GamePj/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/steph/Desktop/413GamePj/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/Heyy/Documents/413GamePj/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_pause">Pause</string>
     <string name="action_restart">Restart</string>
-    <string name="app_name">FlyingAndroid</string>
+    <string name="app_name">Little Flying Fighter</string>
     <string name="game_over">Game Over!</string>
     <string name="hello_world">Hello world!</string>
     <string name="start">Touch to start!</string>
     <string name="time_elapse">"Time: %1$.1fs"</string>
-    <!-- From: file:/C:/Users/steph/Desktop/413GamePj/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/Heyy/Documents/413GamePj/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--

@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package comps413f.android.flyingandroid;
+package comps413f.android.littleflyingfighter;
 
 public final class R {
     public static final class attr {
@@ -19,13 +19,16 @@ public final class R {
         public static final int android_01s=0x7f020001;
         public static final int android_02s=0x7f020002;
         public static final int background=0x7f020003;
-        public static final int flying_android=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int lf2_1=0x7f020006;
-        public static final int lf2_2=0x7f020007;
-        public static final int lf2_3=0x7f020008;
-        public static final int obstacle_lower=0x7f020009;
-        public static final int obstacle_upper=0x7f02000a;
+        public static final int background_city=0x7f020004;
+        public static final int cylinder_1=0x7f020005;
+        public static final int cylinder_2=0x7f020006;
+        public static final int flying_fighter=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int lf2_1=0x7f020009;
+        public static final int lf2_2=0x7f02000a;
+        public static final int lf2_3=0x7f02000b;
+        public static final int obstacle_lower=0x7f02000c;
+        public static final int obstacle_upper=0x7f02000d;
     }
     public static final class id {
         public static final int action_pause=0x7f080001;

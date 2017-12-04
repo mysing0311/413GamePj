@@ -1,4 +1,4 @@
-package comps413f.android.flyingandroid;
+package comps413f.android.littleflyingfighter;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

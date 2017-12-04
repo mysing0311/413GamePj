@@ -1,4 +1,4 @@
-package comps413f.android.flyingandroid;
+package comps413f.android.littleflyingfighter;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -53,7 +53,7 @@ public class FlyingAndroidView extends SurfaceView {
     /** Whether the game is paused and waiting for touching to start. */
     private boolean waitForTouch = true;
     /** Saving and handling of user input of touch events. */
-    private class UserInput {
+    public class UserInput {
         /** Whether there is a user input present. */
         boolean present = false;
 
@@ -96,7 +96,7 @@ public class FlyingAndroidView extends SurfaceView {
     }
     /** User input object of touch events. */
     private UserInput userInput = new UserInput();
-    
+
     /** Task for the game loop. */
     private class AnimationTask extends TimerTask {
         @Override
@@ -131,9 +131,10 @@ public class FlyingAndroidView extends SurfaceView {
                         // c. Remove any obstacle that already moved out from the arena
                         if (obstacles.get(i).isOutOfArena())
                             obstacles.remove(i);
-                    }                
+                        }
+                    }
                 }
-            }
+
 
             // v. Draw the game objects
             Canvas canvas = getHolder().lockCanvas();
@@ -182,11 +183,12 @@ public class FlyingAndroidView extends SurfaceView {
                 textPaint.setTextAlign(Paint.Align.CENTER);
                 canvas.drawText(res.getString(R.string.game_over), getWidth() / 2, getHeight() / 2, textPaint);
                 canvas.drawText(res.getString(R.string.time_elapse, gameTime), getWidth() / 2, getHeight() / 2 + (2 * TEXT_SIZE), textPaint);
+
             }
             else if (waitForTouch) {
                 textPaint.setTextSize(2 * TEXT_SIZE);
                 textPaint.setTextAlign(Paint.Align.CENTER);
-                canvas.drawText(res.getString(R.string.start), getWidth() / 2, getHeight() / 2, textPaint);
+                canvas.drawText(res.getString(R.string.start), getWidth() / 2, getHeight() / 4, textPaint);
             }
             else {
                 textPaint.setTextSize(TEXT_SIZE);
@@ -209,17 +211,19 @@ public class FlyingAndroidView extends SurfaceView {
             obstacles.add(o);
         }
     }
-    
+
+    public boolean onTouchtoRestart(android.view.MotionEvent evt) {
+        if (evt.getAction() == android.view.MotionEvent.ACTION_DOWN) {
+            newGame(true);
+        }return true;}
+
     /** Game over. */
     public void gameOver() {
-        // Add code here
-        // Task 3: Game over handling
-        // i. Set gameOver to true
-        // ii. Stop the animation of the flying andriod
-        // iii. Stop the scrolling background
         gameOver = true;
         ((AnimationDrawable)(flyingAndroid.getDrawable())).stop();
         background.stop(true);
+
+
     }
 
     /** Resume or start the animation. */
@@ -290,7 +294,10 @@ public class FlyingAndroidView extends SurfaceView {
                 newGame(true);
             }
         }, 0);
-    }
+
+
+        }
+
 
     protected boolean verifyDrawable(Drawable who) {
         super.verifyDrawable(who);

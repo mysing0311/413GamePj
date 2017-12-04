@@ -1,4 +1,4 @@
-package comps413f.android.flyingandroid;
+package comps413f.android.littleflyingfighter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,7 +19,7 @@ public class Background {
 
     /** Constructor. */
     public Background(Context context) {
-        background = BitmapFactory.decodeResource(context.getResources(), R.drawable.background);
+        background = BitmapFactory.decodeResource(context.getResources(), R.drawable.background_city);
         int scaledWidth = (int) (background.getWidth() * (FlyingAndroidView.arenaHeight / (float) background.getHeight()));
         background = Bitmap.createScaledBitmap(background, scaledWidth, FlyingAndroidView.arenaHeight, true);
     }
