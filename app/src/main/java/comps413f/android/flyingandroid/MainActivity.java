@@ -33,6 +33,10 @@ public class MainActivity extends Activity {
         case R.id.action_restart:
             animationView.newGame(false);
             break;
+
+        case R.id.action_pause:
+            animationView.resume();
+        break;
         }
         return false;
     }

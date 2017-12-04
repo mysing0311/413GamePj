@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list
     xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:drawable="@drawable/android_00s"
+    <item android:drawable="@drawable/lf2_1"
             android:duration="300" />
-    <item android:drawable="@drawable/android_01s"
+    <item android:drawable="@drawable/lf2_2"
             android:duration="300" />
-    <item android:drawable="@drawable/android_02s"
+    <item android:drawable="@drawable/lf2_3"
             android:duration="300" />
 </animation-list>
-<!-- From: file:/C:/Users/aabbcc/Documents/413pj/app/src/main/res/drawable/flying_android.xml -->
+<!-- From: file:/C:/Users/steph/Desktop/413GamePj/app/src/main/res/drawable/flying_android.xml -->

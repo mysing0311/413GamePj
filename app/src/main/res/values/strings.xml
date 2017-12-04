@@ -8,5 +8,6 @@
     <string name="time_elapse">"Time: %1$.1fs"</string>
     <string name="game_over">Game Over!</string>
     <string name="start">Touch to start!</string>
+    <string name="action_pause">Pause</string>
     
 </resources>
