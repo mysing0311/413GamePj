@@ -106,6 +106,7 @@ public class LittleFlyingFighterView extends SurfaceView {
         @Override
         public void run() {
             userInput.handle();
+
             if (!gameOver && !waitForTouch) {
                 // Add code here
                 // Task 5: Game loop implementation
@@ -135,6 +136,8 @@ public class LittleFlyingFighterView extends SurfaceView {
                         // c. Remove any obstacle that already moved out from the arena
                         if (obstacles.get(i).isOutOfArena())
                             obstacles.remove(i);
+
+
                         }
                     }
                 }
@@ -156,6 +159,7 @@ public class LittleFlyingFighterView extends SurfaceView {
 
                 // d. Draw game text
                 drawGameText(canvas);
+
 
                 getHolder().unlockCanvasAndPost(canvas);
             }
@@ -241,10 +245,8 @@ public class LittleFlyingFighterView extends SurfaceView {
     public void pause() {
         totalTime += (System.currentTimeMillis() - startTime);
         waitForTouch = true;
-
         background.stop(true);
         ((AnimationDrawable) (littleFlyingFighter.getDrawable())).stop();
-
         timer.cancel();
         timer = null;
     }

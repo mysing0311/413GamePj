@@ -8,12 +8,10 @@ import android.graphics.drawable.Drawable.Callback;
 public class LittleFlyingFighter extends Sprite {
     private static final float INITIAL_DY = 15;  // Initial velocity in vertical direction
     private float dy;  // y velocity of the flying android object
-
     /** Constructor. */
     public LittleFlyingFighter(Callback callback, Context context) {
         drawable = (AnimationDrawable) context.getResources().getDrawable(R.drawable.flying_fighter);
         drawable.setCallback(callback);
-
         dy = INITIAL_DY;
     }
 

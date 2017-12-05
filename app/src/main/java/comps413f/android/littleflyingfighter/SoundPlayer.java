@@ -11,7 +11,7 @@ public class SoundPlayer {
     public SoundPlayer(Context context){
         soundPool = new SoundPool(2,AudioManager.STREAM_MUSIC,0);
         bgm = soundPool.load(context,R.raw.bgm,1);
-        gameover = soundPool.load(context,R.raw.gameover,1);
+        gameover = soundPool.load(context,R.raw.gameover_3s,1);
     }
 
     public void playBgm(){
