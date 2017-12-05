@@ -72,16 +72,7 @@ public class LittleFlyingFighterView extends SurfaceView {
          */
         synchronized void handle() {
             if (present) {
-                // Add code here
-                // Task 4: Handling of user input
-                // If (waitForTouch)
-                // - Set waitForTouch to false
-                // - Get current time and assign to startTime
-                // - Start scrolling background
-                // - Start animation of the flying android
-                // Otherwise
-                // - Move the flying android upward
-                if (waitForTouch) {  // Start of the game
+                if (waitForTouch) {
                     waitForTouch = false;
                     startTime = System.currentTimeMillis();
                     background.stop(false);
@@ -89,7 +80,7 @@ public class LittleFlyingFighterView extends SurfaceView {
                     sound = new SoundPlayer(context);
 
                 }
-                else {  // Game active
+                else {
                     littleFlyingFighter.fly();
                     sound.playBgm();
                 }
@@ -98,42 +89,28 @@ public class LittleFlyingFighterView extends SurfaceView {
             }
         }
     }
-    /** User input object of touch events. */
+
     private UserInput userInput = new UserInput();
 
-    /** Task for the game loop. */
+
     private class AnimationTask extends TimerTask {
         @Override
         public void run() {
             userInput.handle();
 
             if (!gameOver && !waitForTouch) {
-                // Add code here
-                // Task 5: Game loop implementation
-                
-                // i. Create obstacles
                 createObstacles();
-
-                // ii. Move the flying android
                 littleFlyingFighter.move();
-                
-                // iii. If the flying android moved out from the arena, call method gameOver
                 if (littleFlyingFighter.isOutOfArena()) {
                     gameOver();
                 }
                 else {
-                    // iv. Obstacles manipulation
                     for (int i = 0; i < obstacles.size(); i++) {
-                        // a. Move the obstacles 
                         obstacles.get(i).move();
-    
-                        // b. Determine if the flying android collided with any obstacle
                         if (obstacles.get(i).collideWith(littleFlyingFighter)) {
                             gameOver();
                             break;
                         }
-    
-                        // c. Remove any obstacle that already moved out from the arena
                         if (obstacles.get(i).isOutOfArena())
                             obstacles.remove(i);
 
@@ -143,44 +120,23 @@ public class LittleFlyingFighterView extends SurfaceView {
                 }
 
 
-            // v. Draw the game objects
             Canvas canvas = getHolder().lockCanvas();
             if (canvas != null) {
-                // a. Draw the scrolling background
                 background.drawOn(canvas);
-
-                // b. Draw the obstacles
                 for (int i = 0; i < obstacles.size(); i++) {
                     obstacles.get(i).drawOn(canvas);
-                }                
-
-                // c. Draw the flying android
+                }
                 littleFlyingFighter.drawOn(canvas);
-
-                // d. Draw game text
                 drawGameText(canvas);
-
-
                 getHolder().unlockCanvasAndPost(canvas);
             }
         }
 
-        /** Paint object for painting text. */
         private Paint textPaint = new Paint();
-        /** Draws text for the game. */
         private void drawGameText(Canvas canvas) {
             Resources res = getResources();
             textPaint.setColor(Color.BLACK);
             textPaint.setTextSize(TEXT_SIZE);
-
-            // Add code here
-            // Task 1: Draw game information
-            // If game over
-            // - Draw "Game Over" and the total time elapsed
-            // Else if wait for touch
-            // - Draw "Touch to Start!"
-            // Else
-            // - Draw the total time elapsed on the top left corner of the arena
             if (gameOver) {
                 if (startTime > 0) {
                     totalTime += (System.currentTimeMillis() - startTime);
@@ -207,10 +163,7 @@ public class LittleFlyingFighterView extends SurfaceView {
         }
     }
 
-    /** Create obstacles randomly. */
     public void createObstacles() {
-        // Add code here
-        // Task 2: Create one pair of pipes for every 15-25s randomly
         float gameTime = (System.currentTimeMillis() - startTime + totalTime);
         float timeDiff = gameTime - obstacleCreationTime;
         if (obstacleCreationTime == -1 || timeDiff > ((Math.random()*1000) + 2000)) {
@@ -225,7 +178,6 @@ public class LittleFlyingFighterView extends SurfaceView {
             newGame(true);
         }return true;}
 
-    /** Game over. */
     public void gameOver() {
         gameOver = true;
         ((AnimationDrawable)(littleFlyingFighter.getDrawable())).stop();
@@ -234,14 +186,12 @@ public class LittleFlyingFighterView extends SurfaceView {
 
     }
 
-    /** Resume or start the animation. */
     public void resume() {
         if (timer == null)
             timer = new Timer();
         timer.schedule(new AnimationTask(), 0, CYCLE_DELAY);
     }
 
-    /** Pause or stop the animation. */
     public void pause() {
         totalTime += (System.currentTimeMillis() - startTime);
         waitForTouch = true;
@@ -251,9 +201,6 @@ public class LittleFlyingFighterView extends SurfaceView {
         timer = null;
     }
 
-    /**
-     * Start a new game.
-     */
     public void newGame(boolean newGame) {
         if (newGame) {
             arenaWidth = getWidth();
@@ -275,10 +222,6 @@ public class LittleFlyingFighterView extends SurfaceView {
         background.stop(true);
     }
 
-    /**
-     * Constructs an animation view. This performs initialization including the 
-     * event handlers for key presses and touches.
-     */
     public LittleFlyingFighterView(Context context) {
         super(context);
         this.context = context;

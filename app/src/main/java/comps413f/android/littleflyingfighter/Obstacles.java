@@ -11,48 +11,36 @@ public class Obstacles {
     /** Constructor. */
     public Obstacles(Context context) {
         int x = LittleFlyingFighterView.arenaWidth;
-
-        // Add code here
-        // Task 1: Create a pair of obstacles
-        // i. Randomize the distance between upper and lower obstacles
         int minDistance = (int) (0.25 * LittleFlyingFighterView.arenaHeight);
         int maxDistance = (int) (0.3 * LittleFlyingFighterView.arenaHeight);
         int distance = minDistance + (int) (Math.random() * (maxDistance - minDistance));
-
-        // ii. Randomize y position of the upper obstacle
         int minY = (int) (0.1 * LittleFlyingFighterView.arenaHeight);
         int maxY = (int) (0.9 * LittleFlyingFighterView.arenaHeight) - distance;
         int y = minY + (int) (Math.random() * (maxY - minY));
-
-        // iii. Upper and lower obstacles creation
         obstacles[0] = new Obstacle(context, R.drawable.cylinder_2);//upper
         obstacles[0].setPosition(x, y - obstacles[0].getHeight());
         obstacles[1] = new Obstacle(context, R.drawable.cylinder_1);//lower
         obstacles[1].setPosition(x, y + distance);
     }
 
-    /** Move the obstacles. */
     public void move() {
         for (Obstacle obstacle:obstacles) {
             obstacle.move();
         }
     }
 
-    /** Draw the obstacles. */
     public void drawOn(Canvas canvas) {
         for (Obstacle obstacle:obstacles) {
             obstacle.drawOn(canvas);
         }
     }
 
-    /** Evaluate if obstacles moved out from the arena. */
     public boolean isOutOfArena() {
         if (obstacles[0].isOutOfArena())
             return true;
         return false;
     }
 
-    /** Evaluate if the input sprite collided with any obstacle. */
     public boolean collideWith(Sprite sprite) {
         for (Obstacle obstacle:obstacles) {
             if (obstacle.collideWith(sprite))
@@ -61,18 +49,13 @@ public class Obstacles {
         return false;
     }
 
-    /** Inner class, represents an individual obstacle, i.e., one pipe. */
     class Obstacle extends Sprite {
-        /** Moving speed of obstacle, which is same as the one in scrolling background. */
         private float dx = Background.SpeedXMagnitude;
-
-        /** Constructor. */
         public Obstacle(Context context, int resId) {
             drawable = context.getResources().getDrawable(resId);
         }
 
         @Override
-        /** Move the obstacle. */
         public void move() {
             if (dx != 0) {
                 // Update the new x position of the obstacle
@@ -84,7 +67,6 @@ public class Obstacles {
         }
 
         @Override
-        /** Evaluate if the obstacle has moved out from the arena. */
         public boolean isOutOfArena() {
             if (getCurPos().x + getWidth() < 0)
                 return true;
