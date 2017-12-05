@@ -24,16 +24,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //animationView = new LittleFlyingFighterView(this);
-        showMainMenu();
-        setContentView(R.layout.activity_main);
-
-
-    }
-    private void showMainMenu() {
-        Intent intent = new Intent(MainActivity.this, LittleFlyingFighter.class);
-        startActivity(intent);
-        finish();
+        animationView = new LittleFlyingFighterView(this);
+        setContentView(animationView);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
