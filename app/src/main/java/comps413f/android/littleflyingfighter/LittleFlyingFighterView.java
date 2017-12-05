@@ -16,7 +16,7 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 /** View of flying android animation. */
-public class FlyingAndroidView extends SurfaceView {
+public class LittleFlyingFighterView extends SurfaceView {
     /** Delay in each animation cycle, in ms. */
     private static final int CYCLE_DELAY = 30;
     /** Text size. */
@@ -28,7 +28,7 @@ public class FlyingAndroidView extends SurfaceView {
     private SoundPlayer sound;
 
     /** Animation object, the flying android. */
-    private FlyingAndroid flyingAndroid;
+    private LittleFlyingFighter littleFlyingFighter;
     /** List of obstacles objects, i.e., pairs of pipes. */
     private Vector<Obstacles> obstacles = new Vector<Obstacles>();
     /** Scrolling background of the view. */
@@ -85,12 +85,12 @@ public class FlyingAndroidView extends SurfaceView {
                     waitForTouch = false;
                     startTime = System.currentTimeMillis();
                     background.stop(false);
-                    ((AnimationDrawable)(flyingAndroid.getDrawable())).start();
+                    ((AnimationDrawable)(littleFlyingFighter.getDrawable())).start();
                     sound = new SoundPlayer(context);
 
                 }
                 else {  // Game active
-                    flyingAndroid.fly();
+                    littleFlyingFighter.fly();
                     sound.playBgm();
                 }
 
@@ -114,10 +114,10 @@ public class FlyingAndroidView extends SurfaceView {
                 createObstacles();
 
                 // ii. Move the flying android
-                flyingAndroid.move();
+                littleFlyingFighter.move();
                 
                 // iii. If the flying android moved out from the arena, call method gameOver
-                if (flyingAndroid.isOutOfArena()) {
+                if (littleFlyingFighter.isOutOfArena()) {
                     gameOver();
                 }
                 else {
@@ -127,7 +127,7 @@ public class FlyingAndroidView extends SurfaceView {
                         obstacles.get(i).move();
     
                         // b. Determine if the flying android collided with any obstacle
-                        if (obstacles.get(i).collideWith(flyingAndroid)) {
+                        if (obstacles.get(i).collideWith(littleFlyingFighter)) {
                             gameOver();
                             break;
                         }
@@ -152,7 +152,7 @@ public class FlyingAndroidView extends SurfaceView {
                 }                
 
                 // c. Draw the flying android
-                flyingAndroid.drawOn(canvas);
+                littleFlyingFighter.drawOn(canvas);
 
                 // d. Draw game text
                 drawGameText(canvas);
@@ -224,7 +224,7 @@ public class FlyingAndroidView extends SurfaceView {
     /** Game over. */
     public void gameOver() {
         gameOver = true;
-        ((AnimationDrawable)(flyingAndroid.getDrawable())).stop();
+        ((AnimationDrawable)(littleFlyingFighter.getDrawable())).stop();
         background.stop(true);
         sound.playGameOver();
 
@@ -243,7 +243,7 @@ public class FlyingAndroidView extends SurfaceView {
         waitForTouch = true;
 
         background.stop(true);
-        ((AnimationDrawable) (flyingAndroid.getDrawable())).stop();
+        ((AnimationDrawable) (littleFlyingFighter.getDrawable())).stop();
 
         timer.cancel();
         timer = null;
@@ -258,7 +258,7 @@ public class FlyingAndroidView extends SurfaceView {
             arenaHeight = getHeight();
 
             background = new Background(context);
-            flyingAndroid = new FlyingAndroid(this, context);
+            littleFlyingFighter = new LittleFlyingFighter(this, context);
         }
 
         gameOver = false;
@@ -267,9 +267,9 @@ public class FlyingAndroidView extends SurfaceView {
         startTime = -1;
         obstacleCreationTime = -1;
         obstacles.clear();
-        flyingAndroid.reset();
+        littleFlyingFighter.reset();
 
-        ((AnimationDrawable)(flyingAndroid.getDrawable())).stop();
+        ((AnimationDrawable)(littleFlyingFighter.getDrawable())).stop();
         background.stop(true);
     }
 
@@ -277,7 +277,7 @@ public class FlyingAndroidView extends SurfaceView {
      * Constructs an animation view. This performs initialization including the 
      * event handlers for key presses and touches.
      */
-    public FlyingAndroidView(Context context) {
+    public LittleFlyingFighterView(Context context) {
         super(context);
         this.context = context;
 
@@ -306,7 +306,7 @@ public class FlyingAndroidView extends SurfaceView {
 
     protected boolean verifyDrawable(Drawable who) {
         super.verifyDrawable(who);
-        return who == flyingAndroid.getDrawable();
+        return who == littleFlyingFighter.getDrawable();
     }
 
     public void invalidateDrawable(Drawable drawable) {

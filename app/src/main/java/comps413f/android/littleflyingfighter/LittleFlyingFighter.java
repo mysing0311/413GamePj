@@ -5,12 +5,12 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable.Callback;
 
 /** The flying android. */
-public class FlyingAndroid extends Sprite {
+public class LittleFlyingFighter extends Sprite {
     private static final float INITIAL_DY = 15;  // Initial velocity in vertical direction
     private float dy;  // y velocity of the flying android object
 
     /** Constructor. */
-    public FlyingAndroid(Callback callback, Context context) {
+    public LittleFlyingFighter(Callback callback, Context context) {
         drawable = (AnimationDrawable) context.getResources().getDrawable(R.drawable.flying_fighter);
         drawable.setCallback(callback);
 
@@ -22,8 +22,8 @@ public class FlyingAndroid extends Sprite {
         // Add code here
         // Task 1: Reset the flying android
         // i. Locate it at the center of the arena 
-        float x = (FlyingAndroidView.arenaWidth - getWidth()) / 2.f;
-        float y = (FlyingAndroidView.arenaHeight - getHeight()) / 2.f;
+        float x = (LittleFlyingFighterView.arenaWidth - getWidth()) / 2.f;
+        float y = (LittleFlyingFighterView.arenaHeight - getHeight()) / 2.f;
 
         // ii. Update its position
         setPosition(x, y);
@@ -51,7 +51,7 @@ public class FlyingAndroid extends Sprite {
     @Override
     /** Evaluate if the flying android is moving out of the arena, i.e., game end. */
     public boolean isOutOfArena() {
-        if (curPos.y < 0 || curPos.y > FlyingAndroidView.arenaHeight - getHeight())
+        if (curPos.y < 0 || curPos.y > LittleFlyingFighterView.arenaHeight - getHeight())
             return true;
         return false;
     }

@@ -20,8 +20,8 @@ public class Background {
     /** Constructor. */
     public Background(Context context) {
         background = BitmapFactory.decodeResource(context.getResources(), R.drawable.background_city);
-        int scaledWidth = (int) (background.getWidth() * (FlyingAndroidView.arenaHeight / (float) background.getHeight()));
-        background = Bitmap.createScaledBitmap(background, scaledWidth, FlyingAndroidView.arenaHeight, true);
+        int scaledWidth = (int) (background.getWidth() * (LittleFlyingFighterView.arenaHeight / (float) background.getHeight()));
+        background = Bitmap.createScaledBitmap(background, scaledWidth, LittleFlyingFighterView.arenaHeight, true);
     }
 
     /** Stop scrolling background. */
